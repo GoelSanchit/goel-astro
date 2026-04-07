@@ -11,17 +11,46 @@ export interface Service {
   description: string;
   price: number;
   icon: string;
+  badge?: string;
 }
 
 export const SERVICES: Service[] = [
   {
-    id: "kundli",
-    title: "Kundli Analysis",
-    titleHi: "जन्म कुंडली विश्लेषण",
+    id: "full-kundli",
+    title: "Full Kundli Analysis",
+    titleHi: "सम्पूर्ण कुंडली विश्लेषण",
     description:
-      "Complete analysis of your birth chart — planets, dasha periods, transits, and much more in detail.",
-    price: 500,
+      "Complete birth chart analysis with 3-year prediction — planets, dasha, transits, remedies, and a detailed roadmap for the years ahead.",
+    price: 2100,
     icon: "Sun",
+    badge: "Most Popular",
+  },
+  {
+    id: "1-question",
+    title: "Answer 1 Question",
+    titleHi: "1 प्रश्न का उत्तर",
+    description:
+      "Have one burning question? Get a focused, detailed answer based on your birth chart analysis.",
+    price: 500,
+    icon: "HelpCircle",
+  },
+  {
+    id: "2-questions",
+    title: "Answer 2 Questions",
+    titleHi: "2 प्रश्नों का उत्तर",
+    description:
+      "Get detailed answers to any 2 specific questions based on your birth chart and planetary positions.",
+    price: 1100,
+    icon: "MessagesSquare",
+  },
+  {
+    id: "3-questions",
+    title: "Answer 3 Questions",
+    titleHi: "3 प्रश्नों का उत्तर",
+    description:
+      "Get detailed answers to any 3 questions about your life — career, relationships, health, finances, or anything on your mind.",
+    price: 1500,
+    icon: "MessageCircleQuestion",
   },
   {
     id: "marriage",
@@ -29,7 +58,7 @@ export const SERVICES: Service[] = [
     titleHi: "कुंडली मिलान",
     description:
       "Ashtakoot gun milan with a detailed compatibility report — complete guidance for marriage decisions.",
-    price: 750,
+    price: 500,
     icon: "Heart",
   },
   {
@@ -42,21 +71,12 @@ export const SERVICES: Service[] = [
     icon: "Briefcase",
   },
   {
-    id: "gemstone",
-    title: "Gem Stone Consultation",
-    titleHi: "रत्न परामर्श",
-    description:
-      "Find out which gemstone suits your birth chart — blue sapphire, emerald, ruby, or others.",
-    price: 500,
-    icon: "Gem",
-  },
-  {
     id: "annual",
     title: "Annual Prediction",
     titleHi: "वार्षिक भविष्यफल",
     description:
-      "Full year prediction report — health, wealth, relationships, and career all covered in one report.",
-    price: 500,
+      "Full year prediction report — health, wealth, relationships, and career all covered in one comprehensive report.",
+    price: 750,
     icon: "CalendarDays",
   },
 ];
