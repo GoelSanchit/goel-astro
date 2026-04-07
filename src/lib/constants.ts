@@ -40,7 +40,7 @@ export const SERVICES: Service[] = [
     titleHi: "2 प्रश्नों का उत्तर",
     description:
       "Get detailed answers to any 2 specific questions based on your birth chart and planetary positions.",
-    price: 1100,
+    price: 1000,
     icon: "MessagesSquare",
   },
   {
@@ -49,7 +49,7 @@ export const SERVICES: Service[] = [
     titleHi: "3 प्रश्नों का उत्तर",
     description:
       "Get detailed answers to any 3 questions about your life — career, relationships, health, finances, or anything on your mind.",
-    price: 1500,
+    price: 1200,
     icon: "MessageCircleQuestion",
   },
   {
