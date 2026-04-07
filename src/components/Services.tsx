@@ -10,6 +10,7 @@ import {
   MessageCircleQuestion,
   MessagesSquare,
   HelpCircle,
+  Gem,
 } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
@@ -22,6 +23,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   MessageCircleQuestion,
   MessagesSquare,
   HelpCircle,
+  Gem,
 };
 
 export default function Services() {

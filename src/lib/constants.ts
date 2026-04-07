@@ -79,6 +79,15 @@ export const SERVICES: Service[] = [
     price: 750,
     icon: "CalendarDays",
   },
+  {
+    id: "gemstone",
+    title: "Gemstone Consultation",
+    titleHi: "रत्न परामर्श",
+    description:
+      "Find out which gemstone suits your birth chart — blue sapphire, emerald, ruby, or others. Wear the right stone for the right results.",
+    price: 300,
+    icon: "Gem",
+  },
 ];
 
 export interface Testimonial {
