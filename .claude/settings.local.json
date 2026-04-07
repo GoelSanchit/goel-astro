@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(mkdir -p public/images)",
+      "Bash(mv upi-qr.jpeg public/images/upi-qr.jpeg)",
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(gh auth:*)",
+      "Bash(git --version)"
+    ]
+  }
+}

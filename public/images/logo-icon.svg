@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Outer ring -->
+  <circle cx="60" cy="60" r="56" stroke="url(#g1)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Sun rays -->
+  <g transform="translate(60,50)" opacity="0.6">
+    <line x1="0" y1="-28" x2="0" y2="-38" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="-20" x2="27" y2="-27" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="28" y1="0" x2="38" y2="0" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="27" y2="27" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="28" x2="0" y2="38" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-20" y1="20" x2="-27" y2="27" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-28" y1="0" x2="-38" y2="0" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-20" y1="-20" x2="-27" y2="-27" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sun circle -->
+  <circle cx="60" cy="50" r="20" fill="url(#s1)" stroke="url(#g1)" stroke-width="2"/>
+
+  <!-- Om stylized -->
+  <circle cx="60" cy="46" r="2.5" fill="#0a0e27"/>
+  <path d="M52,52 Q52,42 60,40 Q68,42 68,52 Q66,58 60,57 Q57,56 57,52" stroke="#0a0e27" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M58,57 Q61,62 66,60" stroke="#0a0e27" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Crescent moon -->
+  <g transform="translate(82,30)" opacity="0.7">
+    <path d="M0,0 A8,8 0 1,1 0,16 A6.5,6.5 0 1,0 0,0Z" fill="url(#g1)"/>
+  </g>
+
+  <!-- Stars -->
+  <g fill="#D4AF37" opacity="0.5">
+    <circle cx="30" cy="28" r="1.5"/>
+    <circle cx="88" cy="22" r="1"/>
+    <circle cx="25" cy="65" r="1"/>
+    <circle cx="95" cy="60" r="1.5"/>
+  </g>
+
+  <!-- Text -->
+  <text x="60" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" letter-spacing="2" fill="url(#g1)">GOEL ASTRO</text>
+
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0D060"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B8960C"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#F0D060"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </radialGradient>
+  </defs>
+</svg>
