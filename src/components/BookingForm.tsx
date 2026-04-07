@@ -17,7 +17,7 @@ interface FormData {
   birthTime: string;
   birthTimeUnknown: boolean;
   birthPlace: string;
-  service: string;
+  services: string[];
   question: string;
   language: string;
   partnerName: string;
@@ -36,7 +36,7 @@ const initialFormData: FormData = {
   birthTime: "",
   birthTimeUnknown: false,
   birthPlace: "",
-  service: "",
+  services: [],
   question: "",
   language: "Hindi",
   partnerName: "",
@@ -56,12 +56,13 @@ export default function BookingForm() {
   useEffect(() => {
     const serviceParam = searchParams.get("service");
     if (serviceParam) {
-      setForm((prev) => ({ ...prev, service: serviceParam }));
+      setForm((prev) => ({ ...prev, services: [serviceParam] }));
     }
   }, [searchParams]);
 
-  const selectedService = SERVICES.find((s) => s.id === form.service);
-  const isMarriage = form.service === "marriage";
+  const selectedServices = SERVICES.filter((s) => form.services.includes(s.id));
+  const totalAmount = selectedServices.reduce((sum, s) => sum + s.price, 0);
+  const isMarriage = form.services.includes("marriage");
 
   function validate(): boolean {
     const newErrors: Partial<Record<keyof FormData, string>> = {};
@@ -74,7 +75,7 @@ export default function BookingForm() {
     if (!form.birthTime && !form.birthTimeUnknown)
       newErrors.birthTime = "Please enter birth time or select 'Don't know'";
     if (!form.birthPlace.trim()) newErrors.birthPlace = "Place of birth is required";
-    if (!form.service) newErrors.service = "Please select a service";
+    if (form.services.length === 0) newErrors.services = "Please select at least one service";
 
     if (isMarriage) {
       if (!form.partnerName.trim())
@@ -103,6 +104,9 @@ export default function BookingForm() {
 
     setLoading(true);
 
+    const serviceNames = selectedServices.map((s) => s.title).join(", ");
+    const serviceNamesHi = selectedServices.map((s) => s.titleHi).join(", ");
+
     const payload = {
       name: form.name,
       phone: "+91" + form.phone,
@@ -112,8 +116,8 @@ export default function BookingForm() {
       dob: form.dob,
       birthTime: form.birthTimeUnknown ? "Unknown" : form.birthTime,
       birthPlace: form.birthPlace,
-      service: selectedService?.title || form.service,
-      amount: selectedService?.price || 0,
+      service: serviceNames,
+      amount: totalAmount,
       question: form.question,
       language: form.language,
       partnerName: form.partnerName,
@@ -137,9 +141,9 @@ export default function BookingForm() {
 
       const params = new URLSearchParams({
         name: form.name,
-        service: selectedService?.title || "",
-        serviceHi: selectedService?.titleHi || "",
-        amount: String(selectedService?.price || 0),
+        service: serviceNames,
+        serviceHi: serviceNamesHi,
+        amount: String(totalAmount),
       });
       router.push(`/thank-you?${params.toString()}`);
     } catch {
@@ -346,30 +350,74 @@ export default function BookingForm() {
           परामर्श विवरण — Consultation Details
         </h3>
         <div className="space-y-4">
-          {/* Service */}
+          {/* Services - Multi Select */}
           <div>
-            <label htmlFor="service" className={labelClass}>
+            <label className={labelClass}>
               Consultation Type <span className="text-red-400">*</span>
+              <span className="text-white/40 font-normal ml-2">(Select one or more)</span>
             </label>
-            <select
-              id="service"
-              name="service"
-              className={inputClass}
-              value={form.service}
-              onChange={(e) => updateField("service", e.target.value)}
-            >
-              <option value="">-- Select a Service --</option>
-              {SERVICES.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.titleHi} — {s.title} ({formatPrice(s.price)})
-                </option>
-              ))}
-            </select>
-            {errors.service && <p className={errorClass}>{errors.service}</p>}
-            {selectedService && (
-              <p className="text-gold text-sm mt-2">
-                Amount: <strong>{formatPrice(selectedService.price)}</strong>
-              </p>
+            <div className="space-y-2 mt-2">
+              {SERVICES.map((s) => {
+                const isChecked = form.services.includes(s.id);
+                return (
+                  <label
+                    key={s.id}
+                    className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                      isChecked
+                        ? "bg-gold/10 border-gold/30"
+                        : "bg-navy-lighter/50 border-gold/10 hover:border-gold/20"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      name="services"
+                      value={s.id}
+                      checked={isChecked}
+                      onChange={(e) => {
+                        const id = e.target.value;
+                        const updated = e.target.checked
+                          ? [...form.services, id]
+                          : form.services.filter((sid) => sid !== id);
+                        setForm((prev) => ({ ...prev, services: updated }));
+                        if (errors.services) {
+                          setErrors((prev) => {
+                            const next = { ...prev };
+                            delete next.services;
+                            return next;
+                          });
+                        }
+                      }}
+                      className="w-4 h-4 accent-gold shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <span className="text-white text-sm font-medium">
+                        {s.titleHi} — {s.title}
+                      </span>
+                      {s.badge && (
+                        <span className="ml-2 bg-gold text-navy text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          {s.badge}
+                        </span>
+                      )}
+                    </div>
+                    <span className={`text-sm font-semibold shrink-0 ${isChecked ? "text-gold" : "text-white/50"}`}>
+                      {formatPrice(s.price)}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+            {errors.services && <p className={errorClass}>{errors.services}</p>}
+            {selectedServices.length > 0 && (
+              <div className="mt-3 p-3 rounded-xl bg-gold/5 border border-gold/20">
+                <div className="flex justify-between items-center">
+                  <span className="text-white/60 text-sm">
+                    {selectedServices.length} service{selectedServices.length > 1 ? "s" : ""} selected
+                  </span>
+                  <span className="text-gold font-bold text-lg">
+                    Total: {formatPrice(totalAmount)}
+                  </span>
+                </div>
+              </div>
             )}
           </div>
 
@@ -498,7 +546,7 @@ export default function BookingForm() {
               <p className="text-red-400 text-sm">{submitError}</p>
               <a
                 href={getWhatsAppURL(
-                  `Hello 🙏 I would like to book a ${selectedService?.title || "consultation"}. My name is ${form.name}.`
+                  `Hello 🙏 I would like to book ${selectedServices.length > 0 ? selectedServices.map((s) => s.title).join(", ") : "a consultation"}. My name is ${form.name}.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -524,7 +572,7 @@ export default function BookingForm() {
             Processing your booking...
           </>
         ) : (
-          <>Book Consultation {selectedService && `— ${formatPrice(selectedService.price)}`}</>
+          <>Book Consultation {selectedServices.length > 0 && `— ${formatPrice(totalAmount)}`}</>
         )}
       </button>
     </form>

@@ -34,7 +34,10 @@ export default function ThankYouContent() {
     }
   }
 
-  const whatsappMsg = `Hello 🙏 I have made a payment of ${formatPrice(Number(amount))} for ${service}. My name is ${name}. Please confirm.`;
+  const serviceList = service.includes(",")
+    ? service.split(", ").join(", ")
+    : service;
+  const whatsappMsg = `Hello 🙏 I have made a payment of ${formatPrice(Number(amount))} for ${serviceList}. My name is ${name}. Please confirm.`;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -71,11 +74,27 @@ export default function ThankYouContent() {
               <span className="text-white/50">Name:</span>
               <span className="text-white">{name}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-white/50">Service:</span>
-              <span className="text-white">
-                {serviceHi ? `${serviceHi} — ` : ""}
-                {service}
+            <div className="flex justify-between items-start">
+              <span className="text-white/50 shrink-0">Service:</span>
+              <span className="text-white text-right">
+                {service.includes(",") ? (
+                  <span className="flex flex-col items-end gap-0.5">
+                    {service.split(", ").map((s, i) => {
+                      const hiParts = serviceHi ? serviceHi.split(", ") : [];
+                      return (
+                        <span key={i} className="text-sm">
+                          {hiParts[i] ? `${hiParts[i]} — ` : ""}
+                          {s}
+                        </span>
+                      );
+                    })}
+                  </span>
+                ) : (
+                  <>
+                    {serviceHi ? `${serviceHi} — ` : ""}
+                    {service}
+                  </>
+                )}
               </span>
             </div>
             <div className="flex justify-between">
