@@ -16,10 +16,10 @@ jobs:
       - run: npm ci && npm run build
         env:
           NEXT_PUBLIC_GOOGLE_SCRIPT_URL: ${{ secrets.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
-          NEXT_PUBLIC_WHATSAPP_NUMBER: ${{ vars.NEXT_PUBLIC_WHATSAPP_NUMBER }}
-          NEXT_PUBLIC_UPI_ID: ${{ vars.NEXT_PUBLIC_UPI_ID }}
-          NEXT_PUBLIC_EMAIL: ${{ vars.NEXT_PUBLIC_EMAIL }}
-          NEXT_PUBLIC_BRAND_NAME: ${{ vars.NEXT_PUBLIC_BRAND_NAME }}
+          NEXT_PUBLIC_WHATSAPP_NUMBER: ${{ secrets.NEXT_PUBLIC_WHATSAPP_NUMBER }}
+          NEXT_PUBLIC_UPI_ID: ${{ secrets.NEXT_PUBLIC_UPI_ID }}
+          NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
+          NEXT_PUBLIC_BRAND_NAME: ${{ secrets.NEXT_PUBLIC_BRAND_NAME }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
