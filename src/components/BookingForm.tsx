@@ -127,17 +127,25 @@ export default function BookingForm() {
     };
 
     try {
-      if (!GOOGLE_SCRIPT_URL) throw new Error("Script URL not configured");
+      if (!GOOGLE_SCRIPT_URL) {
+        throw new Error("NEXT_PUBLIC_GOOGLE_SCRIPT_URL is not set in this build");
+      }
 
-      const res = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      // text/plain is CORS-safelisted, so this avoids a preflight the Apps
+      // Script endpoint cannot answer. The script reads the raw request body
+      // from e.postData.contents either way.
+      const body = JSON.stringify(payload);
+      const headers = { "Content-Type": "text/plain;charset=utf-8" };
 
-      // no-cors gives opaque response, so we assume success
-      void res;
+      try {
+        // A real CORS request lets us see an actual failure from the script.
+        const res = await fetch(GOOGLE_SCRIPT_URL, { method: "POST", headers, body });
+        if (!res.ok) throw new Error(`Script responded ${res.status}`);
+      } catch {
+        // Apps Script redirects to googleusercontent.com, which may not carry
+        // CORS headers. Retry opaquely — the sheet write still goes through.
+        await fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", headers, body });
+      }
 
       const params = new URLSearchParams({
         name: form.name,

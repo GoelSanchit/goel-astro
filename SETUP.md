@@ -210,3 +210,44 @@ NEXT_PUBLIC_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/
 3. Select your GitHub repository
 4. Add all the values from `.env.local` as Environment Variables
 5. Click "Deploy" — Done!
+
+---
+
+## Deploying to Firebase Hosting (goelastro.com)
+
+The site is a static export (`output: "export"`), so every `NEXT_PUBLIC_*` value is
+baked into the JavaScript bundle **at build time**. The GitHub Actions workflow does
+that build — so the variables must exist in Actions, not just in your local `.env`.
+
+If `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` is missing from the CI build, the booking form on
+`/book` fails with *"Something went wrong with your booking"* and never reaches the
+thank-you page, because the Apps Script URL is an empty string in the deployed bundle.
+
+### Add the Apps Script URL to GitHub
+
+1. Go to the repo → **Settings → Secrets and variables → Actions**
+2. On the **Secrets** tab, click **New repository secret**
+   - Name: `NEXT_PUBLIC_GOOGLE_SCRIPT_URL`
+   - Value: your `https://script.google.com/macros/s/.../exec` URL
+3. On the **Variables** tab, optionally add `NEXT_PUBLIC_WHATSAPP_NUMBER`,
+   `NEXT_PUBLIC_UPI_ID`, `NEXT_PUBLIC_EMAIL`, `NEXT_PUBLIC_BRAND_NAME`.
+   If you skip these, the defaults in `src/lib/constants.ts` are used.
+4. Push to `main` (or re-run the latest workflow) to trigger a fresh build.
+
+### Verify the deployed build picked it up
+
+Open `goelastro.com/book`, then in DevTools → Console:
+
+```js
+[...performance.getEntriesByType('resource')]
+  .map(e => e.name).filter(n => n.endsWith('.js'))
+  .forEach(async s => {
+    const t = await (await fetch(s)).text();
+    const m = t.match(/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+/);
+    if (m) console.log('found:', m[0]);
+  });
+```
+
+If it logs a `script.google.com/...` URL, the value was inlined correctly. If you
+instead see `process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL` in the bundle, the secret
+was not available to the build step.
