@@ -26,7 +26,7 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Online Kundli & Jyotish Consultation — Goel Astro, Meerut | ऑनलाइन ज्योतिष परामर्श",| ऑनलाइन ज्योतिष परामर्श",
+    default: "Online Kundli & Jyotish Consultation — Goel Astro, Meerut | ऑनलाइन ज्योतिष परामर्श",
     template: "%s | Goel Astro",
   },
   description: SITE_DESCRIPTION,
