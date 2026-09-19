@@ -17,10 +17,10 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     id: "full-kundli",
-    title: "Full Kundli Analysis",
-    titleHi: "सम्पूर्ण कुंडली विश्लेषण",
+    title: "Full Kundli Analysis (3 Years)",
+    titleHi: "सम्पूर्ण कुंडली विश्लेषण (3 वर्ष)",
     description:
-      "Complete birth chart analysis with 3-year prediction — planets, dasha, transits, remedies, and a detailed roadmap for the years ahead.",
+      "Complete birth chart analysis with a detailed 3-year prediction — planets, dasha, transits, and remedies, year by year, so you know what lies ahead and how to prepare for it.",
     price: 2100,
     icon: "Sun",
     badge: "Most Popular",
