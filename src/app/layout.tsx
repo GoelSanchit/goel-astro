@@ -79,8 +79,18 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: "/images/logo-icon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/images/logo-icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
 };
 
 // Sitewide business schema. Page-specific schema (FAQ, offers) lives on the
@@ -92,8 +102,8 @@ const organizationSchema = {
   name: BRAND_NAME,
   alternateName: "गोयल ज्योतिष",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.svg`,
-  image: `${SITE_URL}/images/logo.svg`,
+  logo: `${SITE_URL}/icon-512.png`,
+  image: `${SITE_URL}/icon-512.png`,
   description: SITE_DESCRIPTION,
   email: EMAIL,
   telephone: `+${WHATSAPP_NUMBER}`,
