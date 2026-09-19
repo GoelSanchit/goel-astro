@@ -17,7 +17,7 @@ export default function Testimonials() {
           <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
             हमारे संतुष्ट ग्राहक
           </h2>
-          <p className="text-white/50 text-lg">What Our Clients Say</p>
+          <p className="text-white/50 text-lg">Astrology Consultation Reviews — What Our Clients Say</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -40,20 +40,24 @@ export default function About() {
             <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
               हमारे बारे में
             </h2>
-            <p className="text-white/50 text-lg mb-6">About Us</p>
+            <p className="text-white/50 text-lg mb-6">About Goel Astro — Vedic Astrologer &amp; Jyotish Consultant</p>
 
             <p className="text-white/70 leading-relaxed mb-6">
-              Welcome! At <strong className="text-gold">Goel Astro</strong>, we
-              bring the ancient wisdom of Vedic Astrology to you in a modern and
-              accessible way. With over 15 years of experience, we have guided
-              thousands of people through life&apos;s most important decisions — whether
-              it&apos;s marriage, career choices, or overcoming difficult times.
+              Welcome! <strong className="text-gold">Goel Astro</strong> is an
+              online Vedic astrology (ज्योतिष) consultation service. With over 15
+              years of experience as a jyotish consultant, we have guided thousands
+              of people across India through life&apos;s most important decisions —
+              marriage, career, health, finances and difficult times — using janam
+              kundli analysis, kundli milan (gun milan), dasha and transit study,
+              and gemstone (रत्न) recommendations.
             </p>
             <p className="text-white/70 leading-relaxed mb-8">
-              We believe that Jyotish is not just about predicting the future — it
-              is a powerful tool to show you the right direction. In every consultation,
-              we provide an in-depth analysis of planetary positions along with
-              practical remedies.
+              We believe Jyotish is not just about predicting the future — it is a
+              tool to show you the right direction. Every consultation includes an
+              in-depth analysis of your birth chart and planetary positions along
+              with practical, easy-to-follow remedies (उपाय). Book online, pay via
+              UPI, and receive your detailed astrology report in Hindi or English on
+              WhatsApp — no need to visit an astrologer in person.
             </p>
 
             {/* Highlights */}

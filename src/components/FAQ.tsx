@@ -20,7 +20,7 @@ export default function FAQ() {
           <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
             अक्सर पूछे जाने वाले प्रश्न
           </h2>
-          <p className="text-white/50 text-lg">Frequently Asked Questions</p>
+          <p className="text-white/50 text-lg">Frequently Asked Questions about Online Kundli &amp; Jyotish Consultation</p>
         </motion.div>
 
         <div className="space-y-3">

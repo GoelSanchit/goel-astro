@@ -30,20 +30,24 @@ export default function Hero() {
           </div>
 
           {/* Brand */}
-          <h1 className="text-5xl sm:text-7xl font-[family-name:var(--font-heading)] font-bold mb-4">
-            <span className="gold-gradient-text">{BRAND_NAME}</span>
+          <h1 className="font-[family-name:var(--font-heading)] font-bold mb-4">
+            <span className="block text-5xl sm:text-7xl gold-gradient-text">{BRAND_NAME}</span>
+            <span className="block text-xl sm:text-2xl text-white/80 font-medium mt-4">
+              ऑनलाइन ज्योतिष परामर्श — Online Kundli &amp; Vedic Astrology Consultation
+            </span>
           </h1>
 
-          {/* Hindi tagline */}
-          <p className="text-2xl sm:text-3xl font-[family-name:var(--font-heading)] text-white/80 mb-6">
+          {/* Sanskrit tagline */}
+          <p className="text-xl sm:text-2xl font-[family-name:var(--font-heading)] text-gold/70 mb-6">
             ज्योतिषं सर्वशास्त्राणां चक्षुः
           </p>
 
           {/* Description */}
           <p className="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Discover your path through the ancient wisdom of Vedic Astrology.
-            Birth chart analysis, marriage compatibility, career guidance, and
-            gemstone consultation — all in one place.
+            Janam kundli analysis, kundli milan for marriage, career astrology and
+            gemstone consultation by an experienced Vedic astrologer — detailed
+            reports in Hindi or English, delivered on WhatsApp within 24 hours.
+            कुंडली विश्लेषण, कुंडली मिलान, करियर और रत्न परामर्श — सब एक ही जगह।
           </p>
         </motion.div>
 

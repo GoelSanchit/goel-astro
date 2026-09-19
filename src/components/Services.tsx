@@ -39,7 +39,7 @@ export default function Services() {
           <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
             हमारी सेवाएं
           </h2>
-          <p className="text-white/50 text-lg">Our Services</p>
+          <p className="text-white/50 text-lg">Online Astrology Services — Kundli, Kundli Milan, Career &amp; Gemstone Consultation</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
