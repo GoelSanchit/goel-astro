@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BRAND_NAME, WHATSAPP_NUMBER } from "@/lib/constants";
-
-// The footer shows a different address from the Contact page on purpose.
-const FOOTER_EMAIL = "sanjay05amr@gmail.com";
+import { BRAND_NAME, EMAIL, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -67,10 +64,10 @@ export default function Footer() {
               <li>
                 Email:{" "}
                 <a
-                  href={`mailto:${FOOTER_EMAIL}`}
+                  href={`mailto:${EMAIL}`}
                   className="hover:text-gold transition-colors"
                 >
-                  {FOOTER_EMAIL}
+                  {EMAIL}
                 </a>
               </li>
               <li>Hours: 10:00 AM to 8:00 PM</li>

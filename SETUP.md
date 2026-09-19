@@ -230,7 +230,7 @@ thank-you page, because the Apps Script URL is an empty string in the deployed b
    - Name: `NEXT_PUBLIC_GOOGLE_SCRIPT_URL`
    - Value: your `https://script.google.com/macros/s/.../exec` URL
 3. On the **Variables** tab, optionally add `NEXT_PUBLIC_WHATSAPP_NUMBER`,
-   `NEXT_PUBLIC_UPI_ID`, `NEXT_PUBLIC_EMAIL`, `NEXT_PUBLIC_BRAND_NAME`.
+   `NEXT_PUBLIC_UPI_ID`, `NEXT_PUBLIC_BRAND_NAME`.
    If you skip these, the defaults in `src/lib/constants.ts` are used.
 4. Push to `main` (or re-run the latest workflow) to trigger a fresh build.
 
