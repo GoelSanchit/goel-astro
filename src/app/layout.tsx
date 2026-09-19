@@ -21,7 +21,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Goel Astro — ज्योतिष परामर्श | Vedic Astrology Consultation",
   description:
-    "Trusted Vedic Astrology consultation — Kundli analysis, marriage compatibility, career guidance, gemstone consultation, and annual predictions. Book today!",
+    "Trusted Vedic Astrology consultation — Kundli analysis, marriage compatibility, career guidance, and gemstone consultation. Book today!",
   keywords:
     "jyotish, kundli, astrology, vedic astrology, horoscope, kundli milan, career guidance, gemstone consultation, rashifal",
   openGraph: {

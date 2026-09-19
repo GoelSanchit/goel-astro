@@ -7,8 +7,6 @@ import {
   Heart,
   Briefcase,
   CalendarDays,
-  MessageCircleQuestion,
-  MessagesSquare,
   HelpCircle,
   Gem,
 } from "lucide-react";
@@ -20,8 +18,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Heart,
   Briefcase,
   CalendarDays,
-  MessageCircleQuestion,
-  MessagesSquare,
   HelpCircle,
   Gem,
 };

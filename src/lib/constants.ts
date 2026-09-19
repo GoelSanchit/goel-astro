@@ -31,26 +31,17 @@ export const SERVICES: Service[] = [
     titleHi: "1 प्रश्न का उत्तर",
     description:
       "Have one burning question? Get a focused, detailed answer based on your birth chart analysis.",
-    price: 500,
+    price: 300,
     icon: "HelpCircle",
   },
   {
-    id: "2-questions",
-    title: "Answer 2 Questions",
-    titleHi: "2 प्रश्नों का उत्तर",
+    id: "kundli-1-year",
+    title: "1-Year Kundli Analysis",
+    titleHi: "1 वर्ष का कुंडली विश्लेषण",
     description:
-      "Get detailed answers to any 2 specific questions based on your birth chart and planetary positions.",
+      "Birth chart analysis with a 1-year prediction — planets, dasha, transits, and remedies for the year ahead.",
     price: 1000,
-    icon: "MessagesSquare",
-  },
-  {
-    id: "3-questions",
-    title: "Answer 3 Questions",
-    titleHi: "3 प्रश्नों का उत्तर",
-    description:
-      "Get detailed answers to any 3 questions about your life — career, relationships, health, finances, or anything on your mind.",
-    price: 1200,
-    icon: "MessageCircleQuestion",
+    icon: "CalendarDays",
   },
   {
     id: "marriage",
@@ -69,15 +60,6 @@ export const SERVICES: Service[] = [
       "Career path guidance based on planetary positions — job, business, or career change decisions made clear.",
     price: 750,
     icon: "Briefcase",
-  },
-  {
-    id: "annual",
-    title: "Annual Prediction",
-    titleHi: "वार्षिक भविष्यफल",
-    description:
-      "Full year prediction report — health, wealth, relationships, and career all covered in one comprehensive report.",
-    price: 750,
-    icon: "CalendarDays",
   },
   {
     id: "gemstone",
