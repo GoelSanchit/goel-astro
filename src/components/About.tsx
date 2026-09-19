@@ -43,10 +43,10 @@ export default function About() {
             <p className="text-white/50 text-lg mb-6">About Goel Astro — Vedic Astrologer &amp; Jyotish Consultant</p>
 
             <p className="text-white/70 leading-relaxed mb-6">
-              Welcome! <strong className="text-gold">Goel Astro</strong> is an
-              online Vedic astrology (ज्योतिष) consultation service. With over 15
-              years of experience as a jyotish consultant, we have guided thousands
-              of people across India through life&apos;s most important decisions —
+              Welcome! <strong className="text-gold">Goel Astro</strong>{" "}is an
+              online Vedic astrology (ज्योतिष) consultation service based in
+              Meerut, Uttar Pradesh. With over 15 years of experience as a jyotish
+              consultant, we have guided thousands of people across India through life&apos;s most important decisions —
               marriage, career, health, finances and difficult times — using janam
               kundli analysis, kundli milan (gun milan), dasha and transit study,
               and gemstone (रत्न) recommendations.

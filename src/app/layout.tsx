@@ -21,12 +21,12 @@ const poppins = Poppins({
 });
 
 const SITE_DESCRIPTION =
-  "Trusted Vedic Astrology consultation by Goel Astro — Kundli analysis, janam kundli, kundli milan for marriage, career guidance, and gemstone consultation. Detailed reports on WhatsApp within 24 hours.";
+  "Trusted Vedic Astrology consultation by Goel Astro, Meerut — Kundli analysis, janam kundli, kundli milan for marriage, career guidance, and gemstone consultation. Detailed reports on WhatsApp within 24 hours.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Online Kundli & Jyotish Consultation — Goel Astro | ऑनलाइन ज्योतिष परामर्श",
+    default: "Online Kundli & Jyotish Consultation — Goel Astro, Meerut | ऑनलाइन ज्योतिष परामर्श",| ऑनलाइन ज्योतिष परामर्श",
     template: "%s | Goel Astro",
   },
   description: SITE_DESCRIPTION,
@@ -49,6 +49,11 @@ export const metadata: Metadata = {
     "gemstone consultation",
     "gemstone recommendation astrology",
     "astrology remedies",
+    "astrologer in Meerut",
+    "best astrologer in Meerut",
+    "jyotish in Meerut",
+    "kundli milan Meerut",
+    "astrologer in Uttar Pradesh",
     "astrologer in India",
     "best astrologer online",
     "astrology consultation on whatsapp",
@@ -69,6 +74,9 @@ export const metadata: Metadata = {
     "ज्योतिष उपाय",
     "ज्योतिषी",
     "वैदिक ज्योतिष",
+    "मेरठ ज्योतिषी",
+    "मेरठ में ज्योतिष",
+    "मेरठ कुंडली मिलान",
     // Brand
     "Goel Astro",
     "goelastro",
@@ -133,6 +141,12 @@ const organizationSchema = {
   email: EMAIL,
   telephone: `+${WHATSAPP_NUMBER}`,
   priceRange: "₹300 - ₹2100",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Meerut",
+    addressRegion: "Uttar Pradesh",
+    addressCountry: "IN",
+  },
   areaServed: { "@type": "Country", name: "India" },
   availableLanguage: ["Hindi", "English"],
   openingHoursSpecification: {

@@ -3,9 +3,9 @@ import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
 import { WHATSAPP_NUMBER, EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact — संपर्क करें",
+  title: "Contact Astrologer in Meerut — संपर्क करें",
   description:
-    "Get in touch with Goel Astro on WhatsApp or email for Vedic astrology consultation. Available 10 AM to 8 PM, online consultation across India.",
+    "Get in touch with Goel Astro on WhatsApp or email for Vedic astrology consultation. Based in Meerut, Uttar Pradesh — available 10 AM to 8 PM, online consultation across India.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Goel Astro",
@@ -70,8 +70,8 @@ export default function ContactPage() {
               <MapPin className="w-7 h-7 text-gold" />
             </div>
             <h3 className="text-white font-semibold mb-1">Location</h3>
-            <p className="text-white/50 text-sm">India</p>
-            <p className="text-gold text-xs mt-2">Online Consultation Available</p>
+            <p className="text-white/50 text-sm">Meerut, Uttar Pradesh</p>
+            <p className="text-gold text-xs mt-2">Online Consultation Available Across India</p>
           </div>
         </div>
 
