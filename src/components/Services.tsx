@@ -9,6 +9,8 @@ import {
   CalendarDays,
   HelpCircle,
   Gem,
+  ScrollText,
+  Palette,
 } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
@@ -20,6 +22,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   CalendarDays,
   HelpCircle,
   Gem,
+  ScrollText,
+  Palette,
 };
 
 export default function Services() {

@@ -70,6 +70,24 @@ export const SERVICES: Service[] = [
     price: 300,
     icon: "Gem",
   },
+  {
+    id: "kundli-bw",
+    title: "Janam Kundli (Black & White)",
+    titleHi: "जन्म कुंडली (श्वेत-श्याम)",
+    description:
+      "Your complete janam kundli prepared in black and white — lagna chart, navamsa, planetary positions, and dasha details.",
+    price: 1000,
+    icon: "ScrollText",
+  },
+  {
+    id: "kundli-colour",
+    title: "Janam Kundli (Coloured)",
+    titleHi: "जन्म कुंडली (रंगीन)",
+    description:
+      "Your complete janam kundli prepared in full colour — lagna chart, navamsa, planetary positions, and dasha details in a beautifully presented format.",
+    price: 1500,
+    icon: "Palette",
+  },
 ];
 
 export interface Testimonial {
