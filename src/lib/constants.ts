@@ -3,6 +3,7 @@ export const UPI_ID = process.env.NEXT_PUBLIC_UPI_ID || "9837827783@ibl";
 export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "Goel Astro";
 export const EMAIL = "sanjay05amr@gmail.com";
 export const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
+export const SITE_URL = "https://goelastro.com";
 
 export interface Service {
   id: string;

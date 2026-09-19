@@ -153,6 +153,13 @@ export default function BookingForm() {
         serviceHi: serviceNamesHi,
         amount: String(totalAmount),
       });
+      // GA4 conversion event; no-op if the analytics script is blocked.
+      window.gtag?.("event", "generate_lead", {
+        currency: "INR",
+        value: totalAmount,
+        items: selectedServices.map((s) => ({ item_id: s.id, item_name: s.title, price: s.price })),
+      });
+
       router.push(`/thank-you?${params.toString()}`);
     } catch {
       setSubmitError(

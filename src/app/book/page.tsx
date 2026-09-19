@@ -3,9 +3,16 @@ import { Suspense } from "react";
 import BookingForm from "@/components/BookingForm";
 
 export const metadata: Metadata = {
-  title: "Book Consultation — Goel Astro | ज्योतिष परामर्श बुक करें",
+  title: "Book Consultation — ज्योतिष परामर्श बुक करें",
   description:
-    "Book your Vedic Astrology consultation now. Kundli analysis, marriage compatibility, career guidance, gemstone consultation — all available.",
+    "Book your Vedic Astrology consultation online. Kundli analysis from ₹300, janam kundli, kundli milan, career guidance and gemstone consultation — pay via UPI, report on WhatsApp within 24 hours.",
+  alternates: { canonical: "/book" },
+  openGraph: {
+    title: "Book a Consultation | Goel Astro",
+    description:
+      "Kundli analysis, kundli milan, career guidance and more — book online and pay via UPI.",
+    url: "/book",
+  },
 };
 
 export default function BookPage() {

@@ -3,8 +3,15 @@ import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
 import { WHATSAPP_NUMBER, EMAIL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact — Goel Astro | संपर्क करें",
-  description: "Get in touch with Goel Astro — via WhatsApp, Email, or contact form.",
+  title: "Contact — संपर्क करें",
+  description:
+    "Get in touch with Goel Astro on WhatsApp or email for Vedic astrology consultation. Available 10 AM to 8 PM, online consultation across India.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | Goel Astro",
+    description: "Reach Goel Astro on WhatsApp or email — 10 AM to 8 PM.",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

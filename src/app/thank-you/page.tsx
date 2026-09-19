@@ -3,8 +3,10 @@ import { Suspense } from "react";
 import ThankYouContent from "@/components/ThankYouContent";
 
 export const metadata: Metadata = {
-  title: "Payment — Goel Astro",
+  title: "Payment",
   description: "Booking successful! Please complete your payment via UPI.",
+  // Personalised post-booking page; keep it out of search results.
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouPage() {
