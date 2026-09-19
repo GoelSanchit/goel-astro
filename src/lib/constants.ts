@@ -1,7 +1,7 @@
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918938903941";
 export const UPI_ID = process.env.NEXT_PUBLIC_UPI_ID || "9837827783@ibl";
 export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "Goel Astro";
-export const EMAIL = process.env.NEXT_PUBLIC_EMAIL || "contact@goelastro.com";
+export const EMAIL = process.env.NEXT_PUBLIC_EMAIL || "sanjay05amr@gmail.com";
 export const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
 
 export interface Service {
