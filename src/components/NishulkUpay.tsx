@@ -3,10 +3,29 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
-const UPAY = [
+interface Upay {
+  emoji: string;
+  text: string;
+  shlok?: {
+    lines: string[];
+    source: string;
+    bhavarth: string;
+  };
+}
+
+const UPAY: Upay[] = [
   {
     emoji: "🌳",
     text: "यदि आप शनिवार को पीपल के पेड़ का स्पर्श करते हैं तथा वहाँ अपनी कोई इच्छा माँगते हैं, तो वह अवश्य पूरी होगी।",
+    shlok: {
+      lines: [
+        "अश्वत्थः सर्ववृक्षाणां देवर्षीणां च नारदः।",
+        "गन्धर्वाणां चित्ररथः सिद्धानां कपिलो मुनिः॥",
+      ],
+      source: "श्रीमद्भगवद्गीता, अध्याय १०, श्लोक २६",
+      bhavarth:
+        "भगवान श्रीकृष्ण कहते हैं — समस्त वृक्षों में मैं पीपल (अश्वत्थ) का वृक्ष हूँ, देवर्षियों में नारद, गंधर्वों में चित्ररथ और सिद्धों में कपिल मुनि हूँ। अर्थात् पीपल का वृक्ष स्वयं भगवान का स्वरूप है, इसीलिए इसका स्पर्श और पूजन अत्यंत फलदायी है।",
+    },
   },
   {
     emoji: "🌙",
@@ -75,6 +94,28 @@ export default function NishulkUpay() {
                 <span className="text-white/85 text-base sm:text-lg leading-relaxed">
                   {item.text}
                 </span>
+
+                {item.shlok && (
+                  <div className="mt-4 pt-4 border-t border-gold/15">
+                    <blockquote className="text-center">
+                      {item.shlok.lines.map((line) => (
+                        <p
+                          key={line}
+                          className="text-gold-light font-[family-name:var(--font-heading)] text-base sm:text-lg leading-loose"
+                        >
+                          {line}
+                        </p>
+                      ))}
+                      <cite className="block not-italic text-gold/70 text-xs sm:text-sm mt-2">
+                        — {item.shlok.source}
+                      </cite>
+                    </blockquote>
+                    <p className="text-white/60 text-sm sm:text-base leading-relaxed mt-4">
+                      <span className="text-gold font-semibold">भावार्थ: </span>
+                      {item.shlok.bhavarth}
+                    </p>
+                  </div>
+                )}
               </div>
             </motion.li>
           ))}
