@@ -101,22 +101,22 @@ export interface Testimonial {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Priya S.",
-    location: "Delhi",
+    name: "Manoj Kansal",
+    location: "Meerut",
     rating: 5,
     text: "The kundli analysis was so detailed, I was truly amazed. The career predictions turned out to be spot on. Thank you so much!",
     service: "Kundli Analysis",
   },
   {
-    name: "Rajesh K.",
-    location: "Mumbai",
+    name: "Kalpana",
+    location: "Noida",
     rating: 5,
     text: "Got kundli matching done for marriage. The report was very detailed and they also suggested remedies. Everything is going smoothly now.",
     service: "Marriage Compatibility",
   },
   {
-    name: "Ankita M.",
-    location: "Jaipur",
+    name: "Sagar Jamod",
+    location: "Maharashtra",
     rating: 5,
     text: "I was very confused about my career — job or business? They analysed my planetary positions and showed me the right path. My business is doing great today.",
     service: "Career Guidance",
@@ -132,8 +132,8 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Meena D.",
     location: "Bangalore",
     rating: 5,
-    text: "I ordered the annual prediction report. The predictions were largely accurate. I will definitely get one for next year too.",
-    service: "Annual Prediction",
+    text: "I ordered the 1-year kundli analysis. The predictions were largely accurate. I will definitely get one for next year too.",
+    service: "1-Year Kundli Analysis",
   },
   {
     name: "Amit G.",
