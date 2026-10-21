@@ -115,8 +115,8 @@ export const TESTIMONIALS: Testimonial[] = [
     service: "Marriage Compatibility",
   },
   {
-    name: "Sagar Jamod",
-    location: "Maharashtra",
+    name: "Sagar",
+    location: "Jamod, Maharashtra",
     rating: 5,
     text: "I was very confused about my career — job or business? They analysed my planetary positions and showed me the right path. My business is doing great today.",
     service: "Career Guidance",
