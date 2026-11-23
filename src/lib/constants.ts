@@ -27,15 +27,6 @@ export const SERVICES: Service[] = [
     badge: "Most Popular",
   },
   {
-    id: "1-question",
-    title: "Answer 1 Question",
-    titleHi: "1 प्रश्न का उत्तर",
-    description:
-      "Have one burning question? Get a focused, detailed answer based on your birth chart analysis.",
-    price: 300,
-    icon: "HelpCircle",
-  },
-  {
     id: "kundli-1-year",
     title: "1-Year Kundli Analysis",
     titleHi: "1 वर्ष का कुंडली विश्लेषण",
