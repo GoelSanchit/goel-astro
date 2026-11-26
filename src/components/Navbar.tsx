@@ -29,6 +29,7 @@ export default function Navbar() {
               alt={BRAND_NAME}
               width={40}
               height={40}
+              loading="eager"
               className="group-hover:scale-105 transition-transform"
             />
             <span className="text-xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ClipboardList, Wallet, MessageSquare, Sparkles } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
 const STEPS = [
   {
@@ -40,10 +41,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-            कैसे काम करता है?
-          </h2>
-          <p className="text-white/50 text-lg">How It Works</p>
+          <SectionHeading hi="कैसे काम करता है?" en="How Online Consultation Works" />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

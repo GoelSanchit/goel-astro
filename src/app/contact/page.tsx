@@ -1,28 +1,42 @@
 import type { Metadata } from "next";
 import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
-import { WHATSAPP_NUMBER, EMAIL } from "@/lib/constants";
+import { WHATSAPP_NUMBER, EMAIL, SITE_URL } from "@/lib/constants";
+import { pageMetadata, ORG_ID, WEBSITE_ID } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Astrologer in Meerut — संपर्क करें",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact an Astrologer in Meerut — संपर्क करें",
   description:
-    "Get in touch with Goel Astro on WhatsApp or email for Vedic astrology consultation. Based in Meerut, Uttar Pradesh — available 10 AM to 8 PM, online consultation across India.",
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact | Goel Astro",
-    description: "Reach Goel Astro on WhatsApp or email — 10 AM to 8 PM.",
-    url: "/contact",
-  },
+    "Contact Goel Astro on WhatsApp, phone or email for Vedic astrology consultation. Based in Meerut, Uttar Pradesh; open 10 AM to 8 PM, online across India.",
+  path: "/contact",
+});
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE_URL}/contact#webpage`,
+  url: `${SITE_URL}/contact`,
+  name: "Contact Goel Astro",
+  isPartOf: { "@id": WEBSITE_ID },
+  about: { "@id": ORG_ID },
 };
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-3xl mx-auto px-4">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        />
         <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-            संपर्क करें
+          <h1 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold mb-3">
+            <span lang="hi" className="gold-gradient-text">
+              संपर्क करें
+            </span>
+            <span className="block mt-3 text-white/50 text-lg font-normal font-[family-name:var(--font-body)]">
+              Contact Goel Astro
+            </span>
           </h1>
-          <p className="text-white/50">Get in Touch</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">

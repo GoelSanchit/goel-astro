@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Loader2, AlertCircle, MessageCircle } from "lucide-react";
 import { SERVICES, GOOGLE_SCRIPT_URL } from "@/lib/constants";
@@ -12,7 +13,6 @@ interface FormData {
   phone: string;
   email: string;
   gender: string;
-  aadhar: string;
   dob: string;
   birthTime: string;
   birthTimeUnknown: boolean;
@@ -31,7 +31,6 @@ const initialFormData: FormData = {
   phone: "",
   email: "",
   gender: "",
-  aadhar: "",
   dob: "",
   birthTime: "",
   birthTimeUnknown: false,
@@ -47,18 +46,19 @@ const initialFormData: FormData = {
 
 export default function BookingForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [form, setForm] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  // Read ?service= on the client so the form itself can be prerendered into
+  // the static HTML (useSearchParams would force a "Loading..." fallback).
   useEffect(() => {
-    const serviceParam = searchParams.get("service");
-    if (serviceParam) {
+    const serviceParam = new URLSearchParams(window.location.search).get("service");
+    if (serviceParam && SERVICES.some((s) => s.id === serviceParam)) {
       setForm((prev) => ({ ...prev, services: [serviceParam] }));
     }
-  }, [searchParams]);
+  }, []);
 
   const selectedServices = SERVICES.filter((s) => form.services.includes(s.id));
   const totalAmount = selectedServices.reduce((sum, s) => sum + s.price, 0);
@@ -112,7 +112,6 @@ export default function BookingForm() {
       phone: "+91" + form.phone,
       email: form.email,
       gender: form.gender,
-      aadhar: form.aadhar,
       dob: form.dob,
       birthTime: form.birthTimeUnknown ? "Unknown" : form.birthTime,
       birthPlace: form.birthPlace,
@@ -270,22 +269,6 @@ export default function BookingForm() {
               ))}
             </div>
             {errors.gender && <p className={errorClass}>{errors.gender}</p>}
-          </div>
-
-          {/* Aadhar */}
-          <div className="sm:col-span-2">
-            <label htmlFor="aadhar" className={labelClass}>
-              Aadhar Number (Optional)
-            </label>
-            <input
-              id="aadhar"
-              name="aadhar"
-              type="text"
-              className={inputClass}
-              placeholder="Aadhar number"
-              value={form.aadhar}
-              onChange={(e) => updateField("aadhar", e.target.value)}
-            />
           </div>
         </div>
       </div>
@@ -576,6 +559,13 @@ export default function BookingForm() {
       )}
 
       {/* Submit */}
+      <p className="text-white/40 text-xs text-center -mb-4">
+        Your birth details are used only to prepare your report. See our{" "}
+        <Link href="/privacy" className="text-gold/80 underline hover:text-gold">
+          Privacy Policy
+        </Link>
+        .
+      </p>
       <button
         type="submit"
         disabled={loading}

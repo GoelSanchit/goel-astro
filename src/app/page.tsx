@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import NishulkUpay from "@/components/NishulkUpay";
 import Services from "@/components/Services";
@@ -5,8 +6,19 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import HowItWorks from "@/components/HowItWorks";
 import FAQ from "@/components/FAQ";
-import { FAQS, SERVICES, SITE_URL, BRAND_NAME } from "@/lib/constants";
+import { FAQS } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
+export const metadata: Metadata = pageMetadata({
+  title: "Online Kundli & Astrology Consultation, Meerut | Goel Astro",
+  absoluteTitle: true,
+  description:
+    "Vedic astrology consultation from Meerut: janam kundli, kundli milan, career and gemstone guidance. Detailed report on WhatsApp within 24 hours.",
+  path: "/",
+});
+
+// FAQ rich results were retired in May 2026; the markup stays because it
+// still describes the visible FAQ accurately.
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -17,36 +29,12 @@ const faqSchema = {
   })),
 };
 
-const offerCatalogSchema = {
-  "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  name: "Astrology Consultation Services",
-  url: `${SITE_URL}/#services`,
-  itemListElement: SERVICES.map((s) => ({
-    "@type": "Offer",
-    url: `${SITE_URL}/book?service=${s.id}`,
-    priceCurrency: "INR",
-    price: s.price,
-    availability: "https://schema.org/InStock",
-    itemOffered: {
-      "@type": "Service",
-      name: `${s.titleHi} — ${s.title}`,
-      description: s.description,
-      provider: { "@id": `${SITE_URL}/#organization`, name: BRAND_NAME },
-    },
-  })),
-};
-
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogSchema) }}
       />
       <Hero />
       <NishulkUpay />

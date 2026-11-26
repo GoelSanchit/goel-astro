@@ -5,9 +5,12 @@ export const GA_MEASUREMENT_ID = "G-R7HP3G9YZP";
 export default function GoogleAnalytics() {
   return (
     <>
+      {/* The 180 KB tag library loads when the browser is idle. The tiny init
+          below still runs early, so events pushed to dataLayer before the
+          library arrives are queued, not lost. */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       <Script id="ga4-init" strategy="afterInteractive">
         {`

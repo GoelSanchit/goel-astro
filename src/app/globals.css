@@ -84,3 +84,110 @@
 .animate-pulse-gold {
   animation: pulse-gold 2s ease-in-out infinite;
 }
+
+/* Hero entrance: transform only (no opacity), so the text is painted on the
+   first frame and counts toward LCP immediately. */
+@keyframes rise {
+  from { transform: translateY(16px); }
+  to { transform: none; }
+}
+
+.animate-rise {
+  animation: rise 0.7s ease-out both;
+}
+
+/* FAQ / <details> chevron */
+details[open] > summary .faq-chevron {
+  transform: rotate(180deg);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-twinkle,
+  .animate-float,
+  .animate-pulse-gold,
+  .star {
+    animation: none !important;
+  }
+}
+
+/* Long-form text: legal pages and service pages */
+.prose-page h2 {
+  font-family: var(--font-heading);
+  color: var(--color-gold);
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 2.5rem 0 0.75rem;
+}
+
+.prose-page h3 {
+  color: rgb(255 255 255 / 0.85);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prose-page p,
+.prose-page li {
+  color: rgb(255 255 255 / 0.68);
+  line-height: 1.75;
+}
+
+.prose-page p {
+  margin: 0 0 1rem;
+}
+
+.prose-page ul,
+.prose-page ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.prose-page ul {
+  list-style: disc;
+}
+
+.prose-page ol {
+  list-style: decimal;
+}
+
+.prose-page li {
+  margin-bottom: 0.4rem;
+}
+
+.prose-page a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-page strong {
+  color: rgb(255 255 255 / 0.9);
+}
+
+.prose-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+.prose-page th,
+.prose-page td {
+  border: 1px solid rgb(212 175 55 / 0.15);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.prose-page th {
+  color: var(--color-gold);
+  font-weight: 600;
+  background: rgb(212 175 55 / 0.05);
+}

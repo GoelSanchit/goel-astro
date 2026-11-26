@@ -9,11 +9,14 @@ export default function StarBackground() {
     const container = containerRef.current;
     if (!container) return;
 
-    const starCount = 80;
+    // Fewer nodes keeps the main thread free; animation stops entirely for
+    // visitors who prefer reduced motion (see .star in globals.css).
+    const starCount = 45;
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < starCount; i++) {
       const star = document.createElement("div");
+      star.className = "star";
       const size = Math.random() * 2 + 1;
       star.style.cssText = `
         position: absolute;

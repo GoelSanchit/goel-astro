@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
+import SectionHeading from "./SectionHeading";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Sun,
@@ -34,10 +35,10 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-            हमारी सेवाएं
-          </h2>
-          <p className="text-white/50 text-lg">Online Astrology Services — Kundli, Kundli Milan, Career &amp; Gemstone Consultation</p>
+          <SectionHeading
+            hi="हमारी सेवाएं"
+            en="Online Astrology Services — Kundli, Kundli Milan, Career & Gemstone Consultation"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -68,12 +69,20 @@ export default function Services() {
                       <Icon className="w-6 h-6 text-gold" />
                     </div>
                     <h3 className={`font-[family-name:var(--font-heading)] font-semibold text-gold mb-1 ${isFeatured ? "text-xl" : "text-lg"}`}>
-                      {service.titleHi}
+                      <span lang="hi">{service.titleHi}</span>
+                      <span className="block text-white/60 text-sm font-normal font-[family-name:var(--font-body)] mt-1">
+                        {service.title}
+                      </span>
                     </h3>
-                    <p className="text-white/60 text-sm mb-1">{service.title}</p>
-                    <p className="text-white/40 text-sm mb-4 leading-relaxed">
+                    <p className="text-white/40 text-sm mb-3 leading-relaxed">
                       {service.description}
                     </p>
+                    <Link
+                      href={service.page}
+                      className="inline-block text-gold/80 hover:text-gold text-sm underline underline-offset-4 mb-4"
+                    >
+                      {service.pageLinkLabel} →
+                    </Link>
                   </div>
                   <div className={`flex items-center justify-between ${isFeatured ? "sm:flex-col sm:items-end sm:gap-3" : ""}`}>
                     <span className={`font-bold text-gold ${isFeatured ? "text-2xl" : "text-xl"}`}>

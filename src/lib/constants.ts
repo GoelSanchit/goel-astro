@@ -13,6 +13,9 @@ export interface Service {
   price: number;
   icon: string;
   badge?: string;
+  /** Dedicated service page with full details. */
+  page: string;
+  pageLinkLabel: string;
 }
 
 export const SERVICES: Service[] = [
@@ -24,6 +27,8 @@ export const SERVICES: Service[] = [
       "Complete birth chart analysis with a detailed 3-year prediction — planets, dasha, transits, and remedies, year by year, so you know what lies ahead and how to prepare for it.",
     price: 2100,
     icon: "Sun",
+    page: "/kundli-analysis",
+    pageLinkLabel: "About kundli analysis",
     badge: "Most Popular",
   },
   {
@@ -34,6 +39,8 @@ export const SERVICES: Service[] = [
       "Birth chart analysis with a 1-year prediction — planets, dasha, transits, and remedies for the year ahead.",
     price: 1000,
     icon: "CalendarDays",
+    page: "/kundli-analysis",
+    pageLinkLabel: "About kundli analysis",
   },
   {
     id: "marriage",
@@ -43,6 +50,8 @@ export const SERVICES: Service[] = [
       "Ashtakoot gun milan with a detailed compatibility report — complete guidance for marriage decisions.",
     price: 500,
     icon: "Heart",
+    page: "/kundli-milan",
+    pageLinkLabel: "How kundli milan works",
   },
   {
     id: "career",
@@ -52,15 +61,19 @@ export const SERVICES: Service[] = [
       "Career path guidance based on planetary positions — job, business, or career change decisions made clear.",
     price: 750,
     icon: "Briefcase",
+    page: "/career-astrology",
+    pageLinkLabel: "About career astrology",
   },
   {
     id: "gemstone",
     title: "Gemstone Consultation",
     titleHi: "रत्न परामर्श",
     description:
-      "Find out which gemstone suits your birth chart — blue sapphire, emerald, ruby, or others. Wear the right stone for the right results.",
+      "Find out which gemstone suits your birth chart — blue sapphire, emerald, ruby, or others — and which stones to avoid, before you spend money on one.",
     price: 300,
     icon: "Gem",
+    page: "/gemstone-consultation",
+    pageLinkLabel: "About gemstone consultation",
   },
   {
     id: "kundli-bw",
@@ -70,6 +83,8 @@ export const SERVICES: Service[] = [
       "Your complete janam kundli prepared in black and white — lagna chart, navamsa, planetary positions, and dasha details.",
     price: 1000,
     icon: "ScrollText",
+    page: "/janam-kundli",
+    pageLinkLabel: "What is in a janam kundli",
   },
   {
     id: "kundli-colour",
@@ -79,7 +94,19 @@ export const SERVICES: Service[] = [
       "Your complete janam kundli prepared in full colour — lagna chart, navamsa, planetary positions, and dasha details in a beautifully presented format.",
     price: 1500,
     icon: "Palette",
+    page: "/janam-kundli",
+    pageLinkLabel: "What is in a janam kundli",
   },
+];
+
+// Dedicated service pages, in the order they appear in navigation.
+export const SERVICE_PAGES = [
+  { href: "/kundli-analysis", label: "Kundli Analysis", labelHi: "कुंडली विश्लेषण" },
+  { href: "/janam-kundli", label: "Janam Kundli", labelHi: "जन्म कुंडली" },
+  { href: "/kundli-milan", label: "Kundli Milan", labelHi: "कुंडली मिलान" },
+  { href: "/career-astrology", label: "Career Astrology", labelHi: "करियर ज्योतिष" },
+  { href: "/gemstone-consultation", label: "Gemstone Consultation", labelHi: "रत्न परामर्श" },
+  { href: "/astrologer-in-meerut", label: "Astrologer in Meerut", labelHi: "मेरठ में ज्योतिषी" },
 ];
 
 export interface Testimonial {
@@ -169,6 +196,6 @@ export const FAQS: FAQ[] = [
   {
     question: "Is my personal information kept safe?",
     answer:
-      "Absolutely! All your personal details and birth chart information are kept completely confidential. We do not share your data with anyone.",
+      "Yes. Your personal and birth details are used only to prepare your report and contact you about your booking. They are never sold or shared for marketing. We do not ask for Aadhaar, bank or card details. Our Privacy Policy (goelastro.com/privacy) explains where the details are stored and how to have them deleted.",
   },
 ];

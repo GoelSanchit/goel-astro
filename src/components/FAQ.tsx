@@ -1,67 +1,42 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { FAQS } from "@/lib/constants";
+import { FAQS, type FAQ as FAQItem } from "@/lib/constants";
+import SectionHeading from "./SectionHeading";
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+interface FAQProps {
+  items?: FAQItem[];
+  titleHi?: string;
+  title?: string;
+}
 
+// Native <details>/<summary>: every answer is in the server-rendered HTML
+// (readable by search engines and AI crawlers) and the accordion works
+// without JavaScript.
+export default function FAQ({
+  items = FAQS,
+  titleHi = "अक्सर पूछे जाने वाले प्रश्न",
+  title = "Frequently Asked Questions about Online Kundli & Jyotish Consultation",
+}: FAQProps) {
   return (
     <section id="faq" className="py-20 section-gradient">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-            अक्सर पूछे जाने वाले प्रश्न
-          </h2>
-          <p className="text-white/50 text-lg">Frequently Asked Questions about Online Kundli &amp; Jyotish Consultation</p>
-        </motion.div>
+        <SectionHeading hi={titleHi} en={title} className="mb-14" />
 
         <div className="space-y-3">
-          {FAQS.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="card-bg overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-5 text-left"
-                aria-expanded={openIndex === i}
-              >
-                <span className="text-white/80 font-medium text-sm sm:text-base pr-4">
+          {items.map((faq) => (
+            <details key={faq.question} className="card-bg overflow-hidden group">
+              <summary className="w-full flex items-center justify-between p-5 text-left cursor-pointer list-none">
+                <h3 className="text-white/80 font-medium text-sm sm:text-base pr-4">
                   {faq.question}
-                </span>
+                </h3>
                 <ChevronDown
-                  className={`w-5 h-5 text-gold shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
-                  }`}
+                  aria-hidden="true"
+                  className="faq-chevron w-5 h-5 text-gold shrink-0 transition-transform duration-300"
                 />
-              </button>
-              <AnimatePresence>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="px-5 pb-5 text-white/50 text-sm leading-relaxed border-t border-gold/10 pt-4">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              </summary>
+              <div className="px-5 pb-5 text-white/60 text-sm leading-relaxed border-t border-gold/10 pt-4">
+                {faq.answer}
+              </div>
+            </details>
           ))}
         </div>
       </div>

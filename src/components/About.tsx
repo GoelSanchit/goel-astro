@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Award, Users, BookOpen, Star } from "lucide-react";
+import { Award, Users, BookOpen, Languages } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
 export default function About() {
   return (
@@ -37,10 +38,12 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-              हमारे बारे में
-            </h2>
-            <p className="text-white/50 text-lg mb-6">About Goel Astro — Vedic Astrologer &amp; Jyotish Consultant</p>
+            <SectionHeading
+              hi="हमारे बारे में"
+              en="About Goel Astro — Vedic Astrologer & Jyotish Consultant"
+              align="left"
+              className="mb-6"
+            />
 
             <p className="text-white/70 leading-relaxed mb-6">
               Welcome! <strong className="text-gold">Goel Astro</strong>{" "}is an
@@ -64,9 +67,9 @@ export default function About() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { icon: Award, label: "15+ Years Experience" },
-                { icon: Users, label: "5000+ Happy Clients" },
+                { icon: Users, label: "5000+ Consultations" },
                 { icon: BookOpen, label: "Vedic Jyotish Expert" },
-                { icon: Star, label: "4.9 Star Rating" },
+                { icon: Languages, label: "Reports in Hindi & English" },
               ].map(({ icon: Icon, label }) => (
                 <div
                   key={label}

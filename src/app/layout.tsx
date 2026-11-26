@@ -5,7 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { SITE_URL, BRAND_NAME, EMAIL, WHATSAPP_NUMBER } from "@/lib/constants";
+import { SITE_URL, BRAND_NAME, EMAIL, WHATSAPP_NUMBER, SERVICES } from "@/lib/constants";
+import { OG_IMAGE, ORG_ID, WEBSITE_ID, CATALOG_ID, offerFor } from "@/lib/seo";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -15,101 +16,41 @@ const playfair = Playfair_Display({
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
 
 const SITE_DESCRIPTION =
-  "Trusted Vedic Astrology consultation by Goel Astro, Meerut — Kundli analysis, janam kundli, kundli milan for marriage, career guidance, and gemstone consultation. Detailed reports on WhatsApp within 24 hours.";
+  "Vedic astrology consultation from Meerut: janam kundli, kundli milan, career and gemstone guidance. Detailed report on WhatsApp within 24 hours.";
 
+// Defaults for every page. Indexable pages set their own canonical, robots
+// and share cards through pageMetadata() in src/lib/seo.ts, so pages without
+// one (such as the 404) don't inherit the homepage canonical.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Online Kundli & Jyotish Consultation — Goel Astro, Meerut | ऑनलाइन ज्योतिष परामर्श",
+    default: "Online Kundli & Astrology Consultation, Meerut | Goel Astro",
     template: "%s | Goel Astro",
   },
   description: SITE_DESCRIPTION,
-  keywords: [
-    // English
-    "online astrology consultation",
-    "online jyotish",
-    "vedic astrology",
-    "vedic astrologer online",
-    "online kundli",
-    "kundli analysis",
-    "janam kundli",
-    "janam kundli online",
-    "kundli milan",
-    "kundli matching for marriage",
-    "gun milan",
-    "horoscope matching",
-    "career astrology",
-    "marriage astrology",
-    "gemstone consultation",
-    "gemstone recommendation astrology",
-    "astrology remedies",
-    "astrologer in Meerut",
-    "best astrologer in Meerut",
-    "jyotish in Meerut",
-    "kundli milan Meerut",
-    "astrologer in Uttar Pradesh",
-    "astrologer in India",
-    "best astrologer online",
-    "astrology consultation on whatsapp",
-    "hindi astrologer",
-    // Hindi
-    "ज्योतिष",
-    "ऑनलाइन ज्योतिष",
-    "ज्योतिष परामर्श",
-    "कुंडली",
-    "जन्म कुंडली",
-    "कुंडली विश्लेषण",
-    "कुंडली मिलान",
-    "गुण मिलान",
-    "ऑनलाइन कुंडली",
-    "करियर ज्योतिष",
-    "विवाह ज्योतिष",
-    "रत्न परामर्श",
-    "ज्योतिष उपाय",
-    "ज्योतिषी",
-    "वैदिक ज्योतिष",
-    "मेरठ ज्योतिषी",
-    "मेरठ में ज्योतिष",
-    "मेरठ कुंडली मिलान",
-    // Brand
-    "Goel Astro",
-    "goelastro",
-  ],
   applicationName: BRAND_NAME,
   authors: [{ name: BRAND_NAME, url: SITE_URL }],
   creator: BRAND_NAME,
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   openGraph: {
     type: "website",
-    locale: "hi_IN",
-    alternateLocale: "en_IN",
-    url: SITE_URL,
+    locale: "en_IN",
+    alternateLocale: "hi_IN",
     siteName: BRAND_NAME,
-    title: "Online Kundli & Jyotish Consultation — Goel Astro",
+    title: "Online Kundli & Astrology Consultation, Meerut | Goel Astro",
     description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   twitter: {
-    card: "summary",
-    title: "Goel Astro — ज्योतिष परामर्श",
+    card: "summary_large_image",
+    title: "Goel Astro — ऑनलाइन ज्योतिष परामर्श",
     description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   icons: {
     icon: [
@@ -126,49 +67,100 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-// Sitewide business schema. Page-specific schema (FAQ, offers) lives on the
-// page that renders that content.
-const organizationSchema = {
+// Sitewide entity graph: WebSite -> ProfessionalService -> OfferCatalog,
+// linked by @id. Page-specific schema (FAQ, breadcrumbs, a page's Service)
+// lives on the page that renders that content.
+// TODO(owner): add a Person "founder" node and "sameAs" profile URLs
+// (Google Business Profile, YouTube, Instagram, directories) once they exist.
+const siteSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": `${SITE_URL}/#organization`,
-  name: BRAND_NAME,
-  alternateName: "गोयल ज्योतिष",
-  url: SITE_URL,
-  logo: `${SITE_URL}/icon-512.png`,
-  image: `${SITE_URL}/icon-512.png`,
-  description: SITE_DESCRIPTION,
-  email: EMAIL,
-  telephone: `+${WHATSAPP_NUMBER}`,
-  priceRange: "₹300 - ₹2100",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Meerut",
-    addressRegion: "Uttar Pradesh",
-    addressCountry: "IN",
-  },
-  areaServed: { "@type": "Country", name: "India" },
-  availableLanguage: ["Hindi", "English"],
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
-    opens: "10:00",
-    closes: "20:00",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: `+${WHATSAPP_NUMBER}`,
-    contactType: "customer service",
-    availableLanguage: ["Hindi", "English"],
-  },
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
+      url: SITE_URL,
+      name: BRAND_NAME,
+      alternateName: "गोयल ज्योतिष",
+      inLanguage: ["en-IN", "hi-IN"],
+      publisher: { "@id": ORG_ID },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": ORG_ID,
+      name: BRAND_NAME,
+      alternateName: "गोयल ज्योतिष",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+      image: `${SITE_URL}/images/og.jpg`,
+      description: SITE_DESCRIPTION,
+      email: EMAIL,
+      telephone: `+${WHATSAPP_NUMBER}`,
+      priceRange: "₹300 - ₹2100",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Meerut",
+        addressRegion: "Uttar Pradesh",
+        addressCountry: "IN",
+      },
+      areaServed: [
+        { "@type": "City", name: "Meerut" },
+        { "@type": "State", name: "Uttar Pradesh" },
+        { "@type": "Country", name: "India" },
+      ],
+      availableLanguage: ["Hindi", "English"],
+      knowsAbout: [
+        "Vedic astrology",
+        "Janam kundli",
+        "Kundli analysis",
+        "Kundli milan (Ashtakoot gun milan)",
+        "Career astrology",
+        "Gemstone consultation",
+      ],
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "10:00",
+        closes: "20:00",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: `+${WHATSAPP_NUMBER}`,
+        contactType: "customer service",
+        areaServed: "IN",
+        availableLanguage: ["Hindi", "English"],
+      },
+      hasOfferCatalog: { "@id": CATALOG_ID },
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": CATALOG_ID,
+      name: "Astrology Consultation Services",
+      itemListElement: SERVICES.map((s) => ({
+        ...offerFor(s.id),
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          alternateName: s.titleHi,
+          description: s.description,
+          url: `${SITE_URL}${s.page}`,
+          provider: { "@id": ORG_ID },
+        },
+      })),
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -177,11 +169,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="hi" className={`${playfair.variable} ${poppins.variable}`}>
+    <html lang="en-IN" className={`${playfair.variable} ${poppins.variable}`}>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
       </head>
       <body className="font-[family-name:var(--font-body)]">

@@ -16,7 +16,7 @@ interface Upay {
 const UPAY: Upay[] = [
   {
     emoji: "🌳",
-    text: "यदि आप शनिवार को पीपल के पेड़ का स्पर्श करते हैं तथा वहाँ अपनी कोई इच्छा माँगते हैं, तो वह अवश्य पूरी होगी।",
+    text: "यदि आप शनिवार को पीपल के पेड़ का स्पर्श करते हैं तथा वहाँ अपनी कोई इच्छा माँगते हैं, तो मान्यता है कि वह पूरी होती है।",
     shlok: {
       lines: [
         "अश्वत्थः सर्ववृक्षाणां देवर्षीणां च नारदः।",
@@ -55,7 +55,7 @@ const UPAY: Upay[] = [
 
 export default function NishulkUpay() {
   return (
-    <section className="py-20 section-gradient">
+    <section lang="hi" className="py-20 section-gradient">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

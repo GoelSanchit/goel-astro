@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Star, Quote, BadgeCheck } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
+import SectionHeading from "./SectionHeading";
 
 function initials(name: string): string {
   return name
@@ -28,12 +29,11 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-heading)] font-bold gold-gradient-text mb-3">
-            हमारे संतुष्ट ग्राहक
-          </h2>
-          <p className="text-white/50 text-lg mb-5">
-            Astrology Consultation Reviews — What Our Clients Say
-          </p>
+          <SectionHeading
+            hi="हमारे संतुष्ट ग्राहक"
+            en="Astrology Consultation Reviews — What Our Clients Say"
+            className="mb-5"
+          />
 
           {/* Rating summary */}
           <div className="inline-flex items-center gap-3 bg-gold/5 border border-gold/20 rounded-full px-5 py-2">
@@ -46,7 +46,7 @@ export default function Testimonials() {
               {averageRating}
             </span>
             <span className="text-white/40 text-sm">
-              {TESTIMONIALS.length} reviews
+              average of the {TESTIMONIALS.length} client reviews below
             </span>
           </div>
         </motion.div>
